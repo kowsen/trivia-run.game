@@ -2,9 +2,12 @@
   import { Link, navigate } from "svelte-routing";
   import { client, trySetTeamToken } from "./client";
   import { createTeam } from "./socket/trivia/game_rpcs";
+  import { buildEnterHandler } from "./util";
 
   let teamName: string = "";
   let isJoinDisabled = false;
+
+  const onCreateKeydown = buildEnterHandler(startCreateTeam);
 
   async function startCreateTeam() {
     isJoinDisabled = true;
@@ -23,9 +26,13 @@
 </script>
 
 <div class="main-links">
-  <input type="text" bind:value={teamName} maxlength={16} /><button
-    disabled={isJoinDisabled}
-    on:click={startCreateTeam}>Create Team</button
+  <input
+    type="text"
+    bind:value={teamName}
+    maxlength={16}
+    on:keydown={onCreateKeydown}
+  /><button disabled={isJoinDisabled} on:click={startCreateTeam}
+    >Create Team</button
   >
 </div>
 

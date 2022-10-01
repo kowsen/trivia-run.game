@@ -9,6 +9,7 @@
     trySetTeamToken,
   } from "./client";
   import { createTeam, guess } from "./socket/trivia/game_rpcs";
+  import { buildEnterHandler } from "./util";
 
   const STATIC_URL = import.meta.env.VITE_STATIC;
 
@@ -17,13 +18,7 @@
   let guessText: string = "";
   let isGuessDisabled = false;
 
-  function onInputKeydown(event: KeyboardEvent) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      event.stopPropagation();
-      sendGuess();
-    }
-  }
+  const onGuessKeydown = buildEnterHandler(sendGuess);
 
   async function sendGuess() {
     isGuessDisabled = true;
@@ -54,7 +49,7 @@
         type="text"
         bind:value={guessText}
         maxlength={32}
-        on:keydown={onInputKeydown}
+        on:keydown={onGuessKeydown}
       /><button disabled={isGuessDisabled} on:click={sendGuess}>Submit</button>
     {/if}
     <div>
