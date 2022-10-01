@@ -4,11 +4,14 @@
   import { Router, Route } from "svelte-routing";
 
   import Home from "./Home.svelte";
-  import { client } from "./client";
+  import { client, trySetTeamToken } from "./client";
+  import Game from "./Game.svelte";
 
   export let url;
 
   $: connected = client.connected;
+
+  trySetTeamToken();
 </script>
 
 {#if $connected}
@@ -16,6 +19,8 @@
     <Router {url}>
       <main>
         <Route path="/" component={Home} />
+
+        <Route path="/game" component={Game} />
 
         <Route>
           <p>PAGE NOT FOUND</p>
