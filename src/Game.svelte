@@ -8,71 +8,35 @@
     currentMainQuestionGuesses,
     trySetTeamToken,
   } from "./client";
+  import GuessFeed from "./GuessFeed.svelte";
+  import GuessField from "./GuessField.svelte";
+  import Question from "./Question.svelte";
   import { createTeam, guess } from "./socket/trivia/game_rpcs";
+  import type { GameGuess } from "./socket/trivia/game_state";
   import { buildEnterHandler } from "./util";
 
   const STATIC_URL = import.meta.env.VITE_STATIC;
 
   trySetTeamToken();
 
-  let guessText: string = "";
-  let isGuessDisabled = false;
+  const guessFilter = (guess: GameGuess) =>
+    !($client.questions.entities[guess.questionId]?.bonusIndex > -1);
 
-  const onGuessKeydown = buildEnterHandler(sendGuess);
-
-  async function sendGuess() {
-    isGuessDisabled = true;
-    await client.call(guess, {
-      text: guessText,
-      teamId: $team._id,
-      questionId: $currentMainQuestion._id,
-    });
-    isGuessDisabled = false;
-    guessText = "";
-  }
+  $: question = $currentMainQuestion;
 </script>
 
-<div class="main-links">
+<div class="game">
   {#if $gameLoaded}
-    <p>
-      {$currentMainQuestion.title ??
-        `Level ${$currentMainQuestion.mainIndex + 1}`}
-    </p>
-    {#if $currentMainQuestion.text}
-      <p>{$currentMainQuestion.text}</p>
-    {/if}
-    {#if $currentMainQuestion.image}
-      <img src={`${STATIC_URL}/${$currentMainQuestion.image}`} alt="img" />
-    {/if}
-    {#if !$currentMainQuestion.hideAnswer}
-      <input
-        type="text"
-        bind:value={guessText}
-        maxlength={32}
-        on:keydown={onGuessKeydown}
-      /><button disabled={isGuessDisabled} on:click={sendGuess}>Submit</button>
-    {/if}
-    <div>
-      {#each $currentMainQuestionGuesses as guess}
-        <p class="guess" class:correct={guess.isCorrect}>{guess.text}</p>
-      {/each}
-    </div>
+    <Question {question} />
+    <GuessField {question} team={$team} />
+    <GuessFeed {guessFilter} />
   {/if}
 </div>
 
 <style>
-  .main-links {
+  .game {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    font-size: 32px;
-  }
-
-  .guess {
-    font-size: 16px;
-  }
-
-  .correct {
-    color: green;
   }
 </style>
