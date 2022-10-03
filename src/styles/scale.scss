@@ -12,4 +12,5 @@ html {
 
   transform: scale(var(--scale));
   height: calc(100% * 1 / var(--scale));
+  min-width: #{$min-viewport-width}px;
 }

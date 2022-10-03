@@ -1,5 +1,14 @@
 <script>
+  import { onDestroy, onMount } from "svelte";
   import Spinner from "./Spinner.svelte";
+
+  onMount(() => {
+    document.body.classList.add("force-disable-scroll");
+  });
+
+  onDestroy(() => {
+    document.body.classList.remove("force-disable-scroll");
+  });
 </script>
 
 <div class="loading-banner-curtain">
@@ -11,6 +20,7 @@
 <style>
   .loading-banner-curtain {
     position: fixed;
+    z-index: 100001;
     display: flex;
     left: 0;
     top: 0;

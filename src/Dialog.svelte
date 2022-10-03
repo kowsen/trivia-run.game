@@ -59,7 +59,6 @@
   $: {
     if (isVisible) {
       document.body.classList.add("force-disable-scroll");
-      window.scrollTo(0, 0);
     } else {
       document.body.classList.remove("force-disable-scroll");
     }
@@ -119,12 +118,14 @@
   }
 
   .dialog-root {
-    position: absolute;
+    position: fixed;
     z-index: 100000;
-    left: 12px;
-    top: 12px;
-    width: calc(100% - 24px);
-    height: calc(100% - 24px);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
   }
 
   .dialog-container {
