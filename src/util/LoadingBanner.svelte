@@ -26,7 +26,7 @@
     top: 0;
     width: 100%;
     height: calc(100% * 1 / var(--scale));
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
   }
 
   .loading-banner {
