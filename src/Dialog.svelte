@@ -118,7 +118,7 @@
   }
 
   .dialog-root {
-    position: fixed;
+    position: absolute;
     z-index: 100000;
     left: 0;
     top: 0;

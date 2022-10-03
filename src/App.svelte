@@ -1,6 +1,6 @@
 <script lang="ts">
   import "./styles/global.scss";
-  // import "./styles/scale.scss";
+  import "./styles/scale.scss";
   import "./styles/scroll.scss";
 
   import { Router, Route } from "svelte-routing";
@@ -20,12 +20,12 @@
 
   export let url;
 
-  // new ResizeObserver(([event]) => {
-  //   document.documentElement.style.setProperty(
-  //     "--page-width",
-  //     `${event.contentRect.width}`
-  //   );
-  // }).observe(document.documentElement);
+  new ResizeObserver(([event]) => {
+    document.documentElement.style.setProperty(
+      "--page-width",
+      `${event.contentRect.width}`
+    );
+  }).observe(document.documentElement);
 
   const isLoading = derived(
     [client.connected, token, gameLoaded],

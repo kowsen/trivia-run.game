@@ -19,7 +19,7 @@
 
 <style>
   .loading-banner-curtain {
-    position: fixed;
+    position: absolute;
     z-index: 100001;
     display: flex;
     left: 0;
