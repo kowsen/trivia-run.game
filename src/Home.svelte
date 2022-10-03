@@ -7,6 +7,9 @@
 
   let teamName: string = "";
   let isJoinDisabled = false;
+  let errorText = "";
+
+  $: placeholderText = isJoinDisabled ? "..." : "Team Name";
 
   const onCreateKeydown = buildEnterHandler(startCreateTeam);
 
@@ -17,7 +20,8 @@
       name: teamName,
     });
     if (result.failureReason) {
-      alert(result.failureReason);
+      errorText = result.failureReason;
+      isJoinDisabled = false;
       teamName = "";
     } else {
       // Do a full reload here so we can pick up the team token.
@@ -26,22 +30,70 @@
   }
 </script>
 
-<div class="main-links">
+<hr />
+
+<p>Use the form below to create a team and see how far you can get!</p>
+
+<div class="input-area">
   <input
+    disabled={isJoinDisabled}
     type="text"
+    maxlength="24"
+    placeholder={placeholderText}
     bind:value={teamName}
-    maxlength={16}
     on:keydown={onCreateKeydown}
-  /><button disabled={isJoinDisabled} on:click={startCreateTeam}
+  />
+  <button disabled={isJoinDisabled} on:click={startCreateTeam}
     >Create Team</button
   >
 </div>
 
-<style>
-  .main-links {
+{#if errorText}
+  <p class="error">{errorText}</p>
+{/if}
+
+<style lang="scss">
+  @import "./styles/constants";
+
+  .input-area {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    font-size: 32px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  input {
+    width: 80%;
+    margin: 12px 0;
+    padding: 8px;
+    font-size: 28px;
+    box-sizing: border-box;
+  }
+
+  button {
+    width: 70%;
+    font-size: 28px;
+    margin: 8px 0 0 0;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  button:hover,
+  button:focus {
+    background-color: $darker-background-color;
+  }
+
+  hr {
+    margin-top: 24px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  .error {
+    width: 100%;
+    text-align: center;
+    color: #ff4136;
   }
 </style>

@@ -42,7 +42,7 @@
       autocorrect="off"
       autocapitalize="off"
       spellcheck="false"
-      maxlength="32"
+      maxlength="64"
       placeholder={placeholderText}
       bind:value={guessText}
       on:keyup={onGuessKeydown}
@@ -58,6 +58,7 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 16px;
+    margin-top: 16px;
   }
 
   input {
