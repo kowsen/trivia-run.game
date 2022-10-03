@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onDestroy } from "svelte";
   import { Link } from "svelte-routing";
+  import Countdown from "./Countdown.svelte";
   import type { GameQuestion, GameTeam } from "./socket/trivia/game_state";
   import ConditionalLink from "./util/ConditionalLink.svelte";
 
@@ -8,54 +9,23 @@
   export let question: GameQuestion;
   export let token: string;
 
-  function getTimeLeft() {
-    return question.unlockTime
-      ? new Date(question.unlockTime).getTime() - Date.now()
-      : 0;
-  }
-
-  let minutesLeft = 0;
-
-  function updateMinutesLeft() {
-    minutesLeft = Math.ceil(getTimeLeft() / 60000);
-  }
-
-  let refreshTimeout: ReturnType<typeof setTimeout>;
-
-  $: hoursLeft = `${Math.floor(minutesLeft / 60)}`.padStart(2, "0");
-  $: minutesRemainder = `${minutesLeft % 60}`.padStart(2, "0");
-
-  $: timerStr = `${hoursLeft}:${minutesRemainder}`;
-
-  function countdown() {
-    updateMinutesLeft();
-    if (minutesLeft > 0) {
-      refreshTimeout = setTimeout(() => {
-        countdown();
-      }, 2500);
-    }
-  }
-
-  if (getTimeLeft() > 0) {
-    countdown();
-  }
-
-  onDestroy(() => {
-    clearTimeout(refreshTimeout);
-  });
+  let isLocked: boolean;
+  let timerStr: string;
 
   $: isSolvedByYou = team.completedBonusQuestions.includes(question._id);
 </script>
 
+<Countdown unlockTime={question.unlockTime} bind:isLocked bind:timerStr />
+
 <ConditionalLink
-  enabled={!minutesLeft}
+  enabled={!isLocked}
   to={`/bonus/${question.bonusIndex}?team=${token}`}
 >
   <div class="bonus" class:solved={isSolvedByYou}>
     <h3 class="bonus-index">{question.bonusIndex}.</h3>
     <div class="bonus-text-container">
       <div class="bonus-text-line">
-        {#if minutesLeft}
+        {#if isLocked}
           <p class="bonus-text">????????</p>
           <p class="bonus-countdown">Unlocks in {timerStr}</p>
         {:else}

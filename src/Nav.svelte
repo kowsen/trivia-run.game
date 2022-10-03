@@ -31,6 +31,7 @@
     user-select: none;
     margin: 18px 0;
     width: 100%;
+    margin-bottom: 28px;
   }
 
   .nav-item-content {

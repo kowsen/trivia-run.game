@@ -84,7 +84,7 @@ function handleUpdateGameState<TDoc extends Doc>(
   builder.addCase(updateGameState, (state, action) => {
     const docsToUpsert = getDocs(action.payload)?.filter(doc => {
       const existing = state.entities[doc._id];
-      return !existing || existing._modified < doc._modified;
+      return !existing || existing._modified <= doc._modified;
     });
     if (docsToUpsert?.length) {
       adapter.setMany(state as EntityState<TDoc>, docsToUpsert);

@@ -1,6 +1,8 @@
 <script lang="ts">
   import { Link, navigate } from "svelte-routing";
   import { client, currentMainQuestion, team, gameLoaded } from "./client";
+  import Countdown from "./Countdown.svelte";
+  import EndOfDay from "./EndOfDay.svelte";
   import GuessFeed from "./GuessFeed.svelte";
   import GuessField from "./GuessField.svelte";
   import Question from "./Question.svelte";
@@ -8,7 +10,8 @@
   import type { GameGuess } from "./socket/trivia/game_state";
   import { buildEnterHandler } from "./util";
 
-  const STATIC_URL = import.meta.env.VITE_STATIC;
+  let isLocked = false;
+  let timerStr = "";
 
   const guessFilter = (guess: GameGuess) =>
     !($client.questions.entities[guess.questionId]?.bonusIndex > -1);
@@ -16,16 +19,21 @@
   $: question = $currentMainQuestion;
 </script>
 
+<Countdown unlockTime={question.unlockTime} bind:isLocked bind:timerStr />
+
 <div class="game">
-  <Question {question} team={$team} />
-  <GuessField {question} team={$team} />
-  <GuessFeed {question} {guessFilter} />
+  {#if isLocked}
+    <EndOfDay {timerStr} />
+  {:else}
+    <Question {question} team={$team} />
+    <GuessField {question} team={$team} />
+    <GuessFeed {question} {guessFilter} />
+  {/if}
 </div>
 
 <style>
   .game {
     display: flex;
     flex-direction: column;
-    gap: 24px;
   }
 </style>

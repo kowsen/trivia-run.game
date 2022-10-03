@@ -5,7 +5,6 @@
   import { client, team, token } from "./client";
 
   const bonusQuestions = derived(client, ({ questions }) => {
-    console.log(questions);
     return Object.values(questions.entities)
       .filter((question) => question.bonusIndex > -1)
       .sort((a, b) => a.bonusIndex - b.bonusIndex);

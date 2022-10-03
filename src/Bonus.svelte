@@ -39,6 +39,5 @@
   .bonus {
     display: flex;
     flex-direction: column;
-    gap: 24px;
   }
 </style>

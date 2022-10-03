@@ -1,5 +1,6 @@
 <script lang="ts">
   import { client } from "./client";
+  import EndOfDay from "./EndOfDay.svelte";
   import Frame from "./Frame.svelte";
   import { guess } from "./socket/trivia/game_rpcs";
   import type {

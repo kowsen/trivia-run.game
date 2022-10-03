@@ -24,6 +24,7 @@
 </script>
 
 {#if !question.hideAnswer && guesses.length > 0}
+  <hr class="log-divider" />
   <h3 class="guess-header">Guess Log:</h3>
   {#each guesses as guess (guess)}
     <div class="guess-container">
@@ -35,6 +36,10 @@
 {/if}
 
 <style lang="scss">
+  .log-divider {
+    margin: 24px 0;
+  }
+
   h3 {
     margin: 0;
     font-size: 20px;
