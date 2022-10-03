@@ -80,6 +80,14 @@
       "*"
     );
   }
+
+  onMount(() => {
+    window.addEventListener("message", onMessage, false);
+  });
+
+  onDestroy(() => {
+    window.removeEventListener("message", onMessage, false);
+  });
 </script>
 
 {#if path}
