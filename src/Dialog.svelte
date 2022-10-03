@@ -123,7 +123,7 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% * 1 / var(--scale));
     padding: 24px;
     box-sizing: border-box;
   }

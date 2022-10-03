@@ -25,7 +25,7 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% * 1 / var(--scale));
     background-color: rgba(0, 0, 0, 0.5);
   }
 
@@ -33,7 +33,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: auto;
+    margin: auto 32px;
     width: 100%;
     height: 64px;
     background-color: #666;

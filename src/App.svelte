@@ -43,7 +43,7 @@
   );
 </script>
 
-{#if $isLoading}
+{#if $isLoading || true}
   <LoadingBanner />
 {:else}
   <div class="content">
