@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Link, navigate } from "svelte-routing";
-  import { client, trySetTeamToken } from "./client";
+  import { client } from "./client";
+  import { startDialog } from "./Dialog.svelte";
   import { createTeam } from "./socket/trivia/game_rpcs";
   import { buildEnterHandler } from "./util";
 
@@ -19,8 +20,8 @@
       alert(result.failureReason);
       teamName = "";
     } else {
-      trySetTeamToken();
-      navigate(`/game?team=${result.teamToken.toLowerCase()}`);
+      // Do a full reload here so we can pick up the team token.
+      window.location.href = `/game?team=${result.teamToken.toLowerCase()}`;
     }
   }
 </script>

@@ -33,6 +33,7 @@ const DUMMY_GAME_QUESTION: RequestDoc<GameQuestion> = {
 };
 
 const LOCKED_QUESTION_PATCH: Partial<GameQuestion> = {
+  title: '',
   text: '',
   image: '',
   frame: '',

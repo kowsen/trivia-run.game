@@ -1,13 +1,6 @@
 <script lang="ts">
   import { Link, navigate } from "svelte-routing";
-  import {
-    client,
-    currentMainQuestion,
-    team,
-    gameLoaded,
-    currentMainQuestionGuesses,
-    trySetTeamToken,
-  } from "./client";
+  import { client, currentMainQuestion, team, gameLoaded } from "./client";
   import GuessFeed from "./GuessFeed.svelte";
   import GuessField from "./GuessField.svelte";
   import Question from "./Question.svelte";
@@ -17,8 +10,6 @@
 
   const STATIC_URL = import.meta.env.VITE_STATIC;
 
-  trySetTeamToken();
-
   const guessFilter = (guess: GameGuess) =>
     !($client.questions.entities[guess.questionId]?.bonusIndex > -1);
 
@@ -26,11 +17,9 @@
 </script>
 
 <div class="game">
-  {#if $gameLoaded}
-    <Question {question} />
-    <GuessField {question} team={$team} />
-    <GuessFeed {guessFilter} />
-  {/if}
+  <Question {question} team={$team} />
+  <GuessField {question} team={$team} />
+  <GuessFeed {question} {guessFilter} />
 </div>
 
 <style>

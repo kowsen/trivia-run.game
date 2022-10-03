@@ -3,6 +3,7 @@
 html,
 body {
   position: relative;
+  height: 100%;
   background-color: $background-color;
   color: $text-color;
 }
@@ -16,25 +17,46 @@ body {
 
 html,
 body,
-button,
 input {
   font-family: 'IBM Plex Mono', monospace;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-.accent {
-  color: #ffa34d;
+a {
+  color: inherit;
+  font-weight: bold;
 }
 
 h1,
 h2,
 h3,
-h4,
-h5,
-.header {
+button,
+.nav-item-content,
+.disclaimer,
+.alternate-font {
   font-family: 'Nova Mono', monospace;
+  user-select: none;
+}
+
+h1,
+h2,
+h3,
+.disclaimer,
+.accent-color {
+  color: $accent-color;
+}
+
+input,
+button {
+  color: $text-color;
+  background-color: $dark-background-color;
+  border: 0;
+
+  &::placeholder {
+    color: $light-text-color;
+  }
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid $light-text-color;
 }

@@ -12,37 +12,59 @@
   export let team: GameTeam;
 
   let guessText: string = "";
-  let isGuessDisabled = false;
+  let isLoading = false;
 
   const onGuessKeydown = buildEnterHandler(sendGuess);
 
   async function sendGuess() {
-    isGuessDisabled = true;
+    isLoading = true;
     await client.call(guess, {
       text: guessText,
       teamId: team._id,
-      questionId: question._id,
+      questionId: question.bonusIndex !== undefined ? question._id : undefined,
     });
-    isGuessDisabled = false;
+    isLoading = false;
     guessText = "";
   }
+
+  $: placeholderText = isLoading ? "..." : "Answer";
+
+  $: hideAnswer =
+    question.hideAnswer || team.completedBonusQuestions.includes(question._id);
 </script>
 
-<div class="guess-field">
-  {#if !question.hideAnswer}
+{#if !hideAnswer}
+  <div class="input-area">
     <input
+      disabled={isLoading}
       type="text"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      maxlength="32"
+      placeholder={placeholderText}
       bind:value={guessText}
-      maxlength={32}
-      on:keydown={onGuessKeydown}
-    /><button disabled={isGuessDisabled} on:click={sendGuess}>Submit</button>
-  {/if}
-</div>
+      on:keyup={onGuessKeydown}
+    />
+  </div>
+{/if}
 
-<style>
-  .guess-field {
+<style lang="scss">
+  @import "./styles/constants";
+
+  .input-area {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  input {
+    width: 90%;
+    margin: 12px 0;
+    padding: 8px;
+    font-size: 28px;
+    box-sizing: border-box;
   }
 </style>
