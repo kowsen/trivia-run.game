@@ -38,7 +38,9 @@
 
   $: imagePath = question.image ? `${STATIC_URL}/${question.image}` : undefined;
 
-  $: framePath = question.frame ? `${STATIC_URL}/${question.frame}` : undefined;
+  $: framePath = question.frame
+    ? `${STATIC_URL}/${question.frame}/index.html`
+    : undefined;
 </script>
 
 <div class="question-container" class:full-height={question.hideAnswer}>
