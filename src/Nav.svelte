@@ -10,7 +10,7 @@
 
 <nav>
   <Link to={$gameLink} class="nav-item">
-    <div class="nav-item-content">Game</div>
+    <div class="nav-item-content">Challenge</div>
   </Link>
 
   <Link to={$bonusLink} class="nav-item">

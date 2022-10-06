@@ -72,7 +72,7 @@
 
   button {
     width: 70%;
-    font-size: 28px;
+    font-size: 22px;
     margin: 8px 0 0 0;
     padding: 8px;
     box-sizing: border-box;

@@ -1,6 +1,6 @@
 <div class="logo-container">
-  <h1>Elegant Saloon</h1>
-  <h2>Trivia Challenge</h2>
+  <h1>Elegant Skeleton</h1>
+  <h2>Public Aptitude Challenge</h2>
 </div>
 
 <style lang="scss">
@@ -15,6 +15,6 @@
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
 </style>
