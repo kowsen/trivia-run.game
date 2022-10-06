@@ -7,22 +7,24 @@
 
   const INTRO_TEXT: Array<string | string[]> = [
     [
-      `Just a few things I'd like to chat about before you start the trivia challenge...`,
-      `(Oh, and save a link to this page really quick, if you lose it you'll lose access to your team permanently.)`,
+      `Thank you for taking part in the ES Public Aptitude Challenge Pilot Study...`,
+      `(Please ensure you save the link to this page, failure to do so will result in permanent loss of access to this team)`,
     ],
     [
-      `One of the best resources you have to answer these questions are other folks at the con, but please be mindful that in the current world situation, people may not be comfortable with you coming up to ask them a question.`,
-      `Please don't do anything to make anyone else uncomfortable. It's easy to ask a question from six feet away!`,
+      `This challenge is intended to assess interpersonal cooperation as well as inteligence, therefore, participants should feel encouraged to seek input from others in attendance or online.`,
+      `However, given current global considerations, some attendees may be uncomfortable being approached by a stranger.`, 
+      `Participants should refrain from doing anything to make others uncomfortable. Previous research has shown it is possible to converse while maintaing a distance of 1.5m.`,
     ],
     [
-      `Also, don't be shy about using the`,
-      `[[GET_HELP]]`,
-      `button to invite other folks to create a team. The more competition we have, the more fun it'll be!`,
-      `And you'll need plenty of teams working together if you want to solve the BONUS questions (which you should go check out)`,
+      `Should participants' encounter or contact another person willing to take part in the challenge, they should use the`,
+      `[[RECRUIT_HELP]]`,
+      `button to invite others to form a team. Studies indicate increased competition correlates with increased enjoyment`,
+      `Additionally, some questions are expected to require cooperation between teams to solve, due to the high degree of difficuty.`,
     ],
     [
-      `Finally, this game has no affiliation with Dr. Exoskeleton (but don't worry, they've been informed of us). It's just a game made by fans for other fans to fill our time while the Doctor's indisposed.`,
-      `Oh, and have fun!`,
+      `Disclaimer: This challenge is an independent study and has no affiliation with Dr. Exoskeleton (though the Dr. has been informed).`,
+      `This pilot study is also intended to assess the efficacy of current methods of administering particular challenges, and is not intended to promote any products, nor generate any profit. `,
+      `Participants are encouraged to experience maximum enjoyment during the challenge...`,
     ],
   ];
 
@@ -91,7 +93,7 @@
       transition:fade
       on:click={() => nextTextStep()}
     >
-      <h2>Welcome to the Clubhouse!</h2>
+      <h2>Welcome to the Organisation</h2>
 
       {#key $displayText}
         <div class="text-container" in:fade>

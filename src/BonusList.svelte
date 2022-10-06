@@ -12,10 +12,9 @@
 </script>
 
 <p class="description">
-  These are <span class="accent-color">extra hard</span> bonus questions. Feel
-  free to <span class="accent-color">work together</span> with other teams on them
-  - they're just for bragging rights! (and you might need the help, some are pretty
-  tough)
+  Supplementary challenge intended to assess teams' <span class="accent-color">spacial awareness</span>, 
+  <span class="accent-color">memory</span>, and <span class="accent-color">logical problem solving</span> skills. 
+  Participating teams are encouraged to <span class="accent-color">work together</span> to solve these advanced challenges.
 </p>
 
 <hr />
