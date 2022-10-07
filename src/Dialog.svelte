@@ -16,9 +16,8 @@
       `Participants should refrain from doing anything to make others uncomfortable. Previous research has shown it is possible to converse while maintaing a distance of 1.5m.`,
     ],
     [
-      `Should participants' encounter or contact another person willing to take part in the challenge, they should use the`,
-      `[[RECRUIT_HELP]]`,
-      `button to invite others to form a team. Studies indicate increased competition correlates with increased enjoyment`,
+      `Should participants' encounter or contact another person willing to take part in the challenge, they should feel free to invite new willing subjects to join a team or form their own.`,
+      `Studies indicate increased competition correlates with increased enjoyment`,
       `Additionally, some questions are expected to require cooperation between teams to solve, due to the high degree of difficuty.`,
     ],
     [
