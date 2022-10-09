@@ -1,9 +1,9 @@
 <script lang="ts">
 </script>
 
-<h3>Thanks for Playing!</h3>
+<h3>Thank you for taking part in the Elegant Skeleton Public Aptitude Pilot Study</h3>
 <div class="question-text-container">
-  <p class="question-text">We appreciate you checking out our game!</p>
+  <p class="question-text">We appreciate your contributions to the field of collective neurocapability. We anticipate that the results from this pilot will provide ample opportunity for future expansion and study.</p>
 </div>
 
 <style lang="scss">

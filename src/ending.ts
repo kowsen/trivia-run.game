@@ -1,4 +1,4 @@
-export const IS_ENDING = false;
+export const IS_ENDING = true;
 
-// 10pm October 10th GMT+11
-export const END_TIME = 1665399600000;
+// 11:59pm Tuesday October 11th GMT+11
+export const END_TIME = 1665493140000;
