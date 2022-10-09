@@ -1,16 +1,11 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import type { GameQuestion } from "./socket/trivia/game_state";
-
-  export let timerStr: string;
 </script>
 
-<h3>Well Done!</h3>
+<h3>Outdated Client</h3>
 <div class="question-text-container">
-  <p class="question-text">You made it to the end of the day!</p>
-  <p class="question-text">
-    Now rest up, there's plenty more questions tomorrow.
-  </p>
-  <p class="countdown accent-color">{timerStr}</p>
+  <p class="question-text">Please refresh the page.</p>
 </div>
 
 <style lang="scss">
@@ -37,11 +32,5 @@
 
   p {
     font-size: 20px;
-  }
-
-  .countdown {
-    width: 100%;
-    font-size: 32px;
-    text-align: center;
   }
 </style>
