@@ -5,7 +5,7 @@
   let timerStr;
   let isLocked;
 
-  $: endText = IS_ENDING ? ` Ends In ${timerStr}` : "";
+  $: endText = IS_ENDING && isLocked ? ` Ends In ${timerStr}` : "";
 </script>
 
 <div class="logo-container">
