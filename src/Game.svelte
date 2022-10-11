@@ -12,7 +12,7 @@
   import type { GameGuess } from "./socket/trivia/game_state";
   import { buildEnterHandler } from "./util";
 
-  let isLocked = false;
+  let isLocked = true;
   let timerStr = "";
 
   const guessFilter = (guess: GameGuess) =>
@@ -21,7 +21,6 @@
   $: question = $currentMainQuestion;
 </script>
 
-<Countdown unlockTime={question.unlockTime} bind:isLocked bind:timerStr />
 
 <div class="game">
   {#if isLocked}
