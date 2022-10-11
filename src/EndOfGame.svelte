@@ -3,7 +3,7 @@
 
 <h3>Thank you for taking part in the Elegant Skeleton Public Aptitude Pilot Study</h3>
 <div class="question-text-container">
-  <p class="question-text">We appreciate your contributions to the field of collective neurocapability. We anticipate that the results from this pilot will provide ample opportunity for future expansion and study.</p>
+  <p class="question-text">We appreciate your contributions to the field of collective neurocapability. We anticipate that the results from this pilot will provide ample opportunity for future expansion and study.|The Elegant Skeleton Research Institute cordially invites willing representitives of participating research groups to provide any relevant feedback either via Discord, or via email correspondence using the address:|elegantskeleton@outlook.com|Thank you for taking part in the pilot study.|Your contributions are appreciated</p>
 </div>
 
 <style lang="scss">
