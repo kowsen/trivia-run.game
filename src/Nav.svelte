@@ -13,7 +13,9 @@
     <div class="nav-item-content">Challenge</div>
   </Link>
 
- 
+  <Link to={$bonusLink} class="nav-item">
+    <div class="nav-item-content">Bonus</div>
+  </Link>
 
   <Link to={$rankingLink} class="nav-item">
     <div class="nav-item-content">Ranking</div>
