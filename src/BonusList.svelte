@@ -12,7 +12,7 @@
 </script>
 
 <p class="description">
-  Supplementary challenge intended to assess teams' <span class="accent-color">spacial awareness</span>, 
+  Bonus Levels are supplementary challenges intended to assess participants' <span class="accent-color">spatial awareness</span>, 
   <span class="accent-color">memory</span>, and <span class="accent-color">logical problem solving</span> skills. 
   Participating teams are encouraged to <span class="accent-color">work together</span> to solve these advanced challenges.
 </p>

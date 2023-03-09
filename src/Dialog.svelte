@@ -7,22 +7,22 @@
 
   const INTRO_TEXT: Array<string | string[]> = [
     [
-      `Thank you for taking part in the ES Public Aptitude Challenge Pilot Study...`,
+      `Thank you for choosing to take part in the ES Public Aptitude Challenge Study...`,
       `(Please ensure you save the link to this page, failure to do so will result in permanent loss of access to this team)`,
     ],
     [
-      `This challenge is intended to assess interpersonal cooperation as well as inteligence, therefore, participants should feel encouraged to seek input from others in attendance or online.`,
+      `This challenge is intended to assess interpersonal cooperation as well as intelligence, therefore, participants should feel encouraged to seek input from others in attendance or online.`,
       `However, given current global considerations, some attendees may be uncomfortable being approached by a stranger.`, 
-      `Participants should refrain from doing anything to make others uncomfortable. Previous research has shown it is possible to converse while maintaing a distance of 1.5m.`,
+      `Therefore, participants should refrain from doing anything to make others “uncomfortable”. Previous research has shown it is possible to converse while maintaining a distance of 1.5m.`,
     ],
     [
-      `Should participants' encounter or contact another person willing to take part in the challenge, they should feel free to invite new willing subjects to join a team or form their own.`,
-      `Studies indicate increased competition correlates with increased enjoyment`,
-      `Additionally, some questions are expected to require cooperation between teams to solve, due to the high degree of difficuty.`,
+      `Should participants' encounter or contact another person willing to take part in the challenge, they should feel free to invite new, willing subjects to join their team, or encourage them to form a team of their own.`,
+      `Studies indicate increased competition correlates with increased participant enjoyment.`,
+      `Additionally, some questions are expected to require cooperation between teams to solve, due to their high degree of difficulty.`,
     ],
     [
-      `Disclaimer: This challenge is an independent study and has no affiliation with Dr. Exoskeleton (though the Dr. has been informed).`,
-      `This pilot study is also intended to assess the efficacy of current methods of administering particular challenges, and is not intended to promote any products, nor generate any profit. `,
+      `Disclaimer: This challenge is an independent study and has no affiliation with Dr. Exoskeleton.`,
+      `This challenge is part of an ongoing study that is intended to assess the efficacy of current methods of administering public challenges, and is not intended to promote any products.`,
       `Participants are encouraged to experience maximum enjoyment during the challenge...`,
     ],
   ];
@@ -92,7 +92,7 @@
       transition:fade
       on:click={() => nextTextStep()}
     >
-      <h2>Welcome to the Organisation</h2>
+      <h2>Welcome to Elegant Skeleton</h2>
 
       {#key $displayText}
         <div class="text-container" in:fade>
