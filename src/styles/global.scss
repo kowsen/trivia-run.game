@@ -44,13 +44,16 @@ button,
 
 h1,
 h2,
-h3,
-.disclaimer,
-.accent-color {
+.disclaimer {
   color: $accent-color;
 }
 
-h4 {
+h3 {
+  color:$third-accent-color;
+}
+
+h4,
+.accent-color {
   color:$dark-accent-color;
 }
 
