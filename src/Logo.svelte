@@ -12,7 +12,6 @@
   h1,
   h2 {
     text-align: left;
-    display: flex;
     
   }
 
@@ -25,12 +24,13 @@
   h2 {
     font-size: 20px;
     padding-top: 22%;
+    margin-bottom: 15%;
     
   }
 
-  h4 {
+/*   h4 {
     font-size: 15px;
     text-align: center;
     margin: 2;
-  }
+  } */
 </style>
