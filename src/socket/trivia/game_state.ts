@@ -62,6 +62,12 @@ export interface GameGuess extends Doc {
   isCorrect: boolean;
 }
 
+export interface GameSettings extends Doc {
+  state: GameState;
+  refreshToken: string;
+}
+export type GameState = 'notActive' | 'active' | 'completed';
+
 const DUMMY_GAME_GUESS: RequestDoc<GameGuess> = {
   questionId: 'DUMMY',
   text: 'DUMMY',
@@ -72,9 +78,10 @@ export interface GameStateUpdate {
   questions?: GameQuestion[];
   teams?: GameTeam[];
   guesses?: GameGuess[];
+  gameSettings?: GameSettings[];
 }
 
-export const updateGameState = createAction('game/update', (payload: GameStateUpdate) => ({payload}));
+export const updateGameState = createAction('game/update', (payload: GameStateUpdate) => ({ payload }));
 
 function handleUpdateGameState<TDoc extends Doc>(
   builder: ActionReducerMapBuilder<EntityState<TDoc>>,
@@ -86,6 +93,7 @@ function handleUpdateGameState<TDoc extends Doc>(
       const existing = state.entities[doc._id];
       return !existing || existing._modified <= doc._modified;
     });
+
     if (docsToUpsert?.length) {
       adapter.setMany(state as EntityState<TDoc>, docsToUpsert);
     }
@@ -116,8 +124,17 @@ const guessSlice = createReducer(guessAdapter.getInitialState(), builder => {
   handleUpdateGameState(builder, guessAdapter, ({ guesses }) => guesses);
 });
 
+const gameSetingsAdapter = createEntityAdapter<GameSettings>({
+  selectId: model => model._id,
+
+});
+const gameSetingsSlice = createReducer(gameSetingsAdapter.getInitialState(), builder => {
+  handleUpdateGameState(builder, gameSetingsAdapter, ({ gameSettings }) => gameSettings);
+});
+
 export const gameReducer = combineReducers({
   questions: questionsSlice,
   teams: teamSlice,
   guesses: guessSlice,
+  gameSettings: gameSetingsSlice,
 });

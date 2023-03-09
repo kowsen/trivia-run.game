@@ -57,6 +57,7 @@ export class GameClient<TGameState> {
         throw new Error('Received invalid action message');
       }
       this.state = reducer(this.state, action);
+      
       for (const listener of this.stateListeners) {
         listener(this.state);
       }
