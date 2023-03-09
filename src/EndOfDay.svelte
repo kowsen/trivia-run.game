@@ -8,7 +8,7 @@
 <div class="question-text-container">
   <p class="question-text">You made it to the end of the day!</p>
   <p class="question-text">
-    Now rest up, there's plenty more questions tomorrow.
+    Participants are advised to rest and refresh. Additional challenges await tomorrow.
   </p>
   <p class="countdown accent-color">{timerStr}</p>
 </div>
