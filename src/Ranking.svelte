@@ -40,7 +40,6 @@
 
   onMount(async () => {
     const response = await client.call(getRanking, { teamId: $team._id });
-    console.log(response);
     teams = response.ranking;
     isLoading = false;
   });
