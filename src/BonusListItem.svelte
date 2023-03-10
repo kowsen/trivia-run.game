@@ -22,7 +22,15 @@
   to={`/bonus/${question.bonusIndex}?team=${token}`}
 >
   <div class="bonus" class:solved={isSolvedByYou}>
-    <h3 class="bonus-index">{question.bonusIndex}.</h3>
+    <div class="bonus-index-group">
+      {#if question.bonusIndex == 1}
+        <h3 class="bonus-index short-number">{question.bonusIndex}</h3>
+      {:else}
+        <h3 class="bonus-index">{question.bonusIndex}</h3>
+      {/if}
+      <h3>.</h3>
+    </div>
+
     <div class="bonus-text-container">
       <div class="bonus-text-line">
         {#if isLocked}
@@ -69,20 +77,31 @@
     user-select: none;
     width: 100%;
     box-sizing: border-box;
-    display: flex;
     font-size: 24px;
     padding: 12px;
     background-color: $dark-background-color;
     align-items: center;
+    display: grid;
+    grid-template-columns: 2.5em 1fr;
   }
 
   .bonus-text,
   .solver-text {
     margin: 0;
   }
-
+  .bonus-index-group {
+    margin-right: 20px;
+    display: flex;
+  }
   .bonus-index {
-    margin: 0 24px 0 12px;
+    text-align: right;
+    flex-grow: 1;
+    margin-right: 2px;
+    &.short-number {
+      // hack to make number 1 look a bit wider
+      padding-right: 4px;
+      transform: scaleX(1.3);
+    }
   }
 
   h3,
