@@ -3,12 +3,16 @@
   import { derived } from "svelte/store";
   import { gameLoaded, token } from "./client";
 
+  export let onlyShowRanking: boolean;
+
   const gameLink = derived(token, (token) => `/game?team=${token}`);
   const bonusLink = derived(token, (token) => `/bonus?team=${token}`);
   const rankingLink = derived(token, (token) => `/ranking?team=${token}`);
+  
 </script>
 
 <nav>
+  {#if !onlyShowRanking}
   <Link to={$gameLink} class="nav-item">
     <div class="nav-item-content">Challenge</div>
   </Link>
@@ -17,9 +21,16 @@
     <div class="nav-item-content">Bonus</div>
   </Link>
 
-  <Link to={$rankingLink} class="nav-item">
+  <Link to={$rankingLink} class="nav-item ">
     <div class="nav-item-content">Ranking</div>
   </Link>
+  {:else}
+  
+
+  <div class="nav-item nav-item-item-forced">
+    <div class="nav-item-content">Ranking</div>
+  </div>
+  {/if}
 </nav>
 
 <style lang="scss">
@@ -56,7 +67,8 @@
 
   .nav-item-content:hover,
   :global(.nav-item:focus .nav-item-content),
-  :global(.nav-item[aria-current="page"] .nav-item-content) {
+  :global(.nav-item[aria-current="page"] .nav-item-content),
+  .nav-item-item-forced {
     background-color: $darker-background-color;
   }
 </style>
