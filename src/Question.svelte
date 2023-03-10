@@ -3,6 +3,7 @@
   import EndOfDay from "./EndOfDay.svelte";
   import Frame from "./Frame.svelte";
   import { guess } from "./socket/trivia/game_rpcs";
+  import SvelteMarkdown from 'svelte-markdown'
   import type {
     GameGuess,
     GameQuestion,
@@ -26,6 +27,12 @@
     if (frame) {
       frame.notifySent(isCorrect);
     }
+  }
+
+  interface QuestionStructure {
+    value: string,
+    newLine: boolean,
+    strikeThrough: boolean,
   }
 
   $: title =
@@ -64,9 +71,12 @@
   {/if}
 
   {#if splitQuestionText}
+
     <div class="question-text-container">
       {#each splitQuestionText as questionChunk}
-        <p class="question-text">{questionChunk}</p>
+        <p class="question-text">
+          <SvelteMarkdown source={questionChunk} />
+        </p>
       {/each}
     </div>
   {/if}
