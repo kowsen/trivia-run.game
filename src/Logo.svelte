@@ -6,7 +6,6 @@
   </h1>
   <h2>Public Aptitude Challenge<br>
     <span><a href="https://discord.gg/g5Yhybq6G9">join the discord</a></span></h2>
-  <!-- <h4><a href="https://discord.gg/g5Yhybq6G9">join the discord</a></h4> -->
 </div>
 
 <style lang="scss">
