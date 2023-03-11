@@ -21,6 +21,7 @@
 
 <Countdown unlockTime={question.unlockTime} bind:isLocked bind:timerStr />
 
+<h4><span style="color:#ccc">Participants should remember to save their unique URL to retain access to their team. Share this URL to add new team members</span></h4>
 <div class="game">
   {#if isLocked}
     <EndOfDay {timerStr} />

@@ -1,5 +1,5 @@
 @import 'constants';
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Montserrat+Subrayada:wght@700&family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Montserrat+Subrayada:wght@700&family=Orbitron&display=swap&family=Cormorant+Upright:wght@300&display=swap');
 
 html,
 body {
@@ -20,6 +20,11 @@ html,
 body,
 input {
   font-family: 'Chakra Petch', sans-serif;
+}
+
+span{
+  font-family: 'Cormorant Upright', serif;
+  color: $third-accent-color;
 }
 
 a {
@@ -49,9 +54,11 @@ h2,
 }
 
 h3,
-h4,
 .accent-color  {
   color:$dark-accent-color;
+}
+h4 {
+  color: $light-text-color;
 }
 
 input,
