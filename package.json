@@ -23,9 +23,9 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "js-cookie": "^3.0.1",
-    "jscookie": "^1.1.0",
     "sass": "^1.55.0",
     "socket.io-client": "^4.5.2",
+    "svelte-markdown": "^0.2.3",
     "svelte-routing": "^1.6.0",
     "uuid": "^9.0.0"
   }

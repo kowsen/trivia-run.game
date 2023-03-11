@@ -17,6 +17,8 @@
   import BonusList from "./BonusList.svelte";
   import Ranking from "./Ranking.svelte";
   import Bonus from "./Bonus.svelte";
+  import { compute_rest_props } from "svelte/internal";
+  import Cookies from "js-cookie";
 
   export let url;
 
@@ -27,31 +29,72 @@
     );
   }).observe(document.documentElement);
 
-  const isLoading = derived(
-    [client.connected, token, gameLoaded],
-    ([connected, token, gameLoaded]) => {
-      if (!connected) {
-        return true;
+  export const DEFAULT_GAME_SETTINGS = {
+    _id: "MAIN",
+    state: "notActive",
+    refreshToken: "A",
+  };
+
+  let isSetup = false;
+  const result = derived(
+    [client, client.connected, token, gameLoaded],
+    ([{ gameSettings }, connected, token, gameLoaded]) => {
+      if (!connected || (token && !gameLoaded)){ 
+        return {
+          isLoading: true, 
+          gameSettings: DEFAULT_GAME_SETTINGS,
+        };}
+
+      const mainGameSettings = gameSettings?.entities[DEFAULT_GAME_SETTINGS._id];
+      
+      if (!isSetup) {
+        if (!!mainGameSettings){
+          Cookies.set("session-refresh", mainGameSettings.refreshToken, {
+            secure: true,
+            expires: 365,
+            path: "/",
+            sameSite: "Lax",
+          });
+          isSetup = true;
+        }
+      } else {
+        const currentCookie = Cookies.get("session-refresh") || DEFAULT_GAME_SETTINGS.refreshToken;
+        if (currentCookie !== mainGameSettings.refreshToken){
+          location.reload(); 
+        }
       }
 
-      if (token && !gameLoaded) {
-        return true;
-      }
-
-      return false;
+      return {
+        isLoading: false, 
+        gameSettings: mainGameSettings};
     }
   );
+
 </script>
 
-{#if $isLoading}
+{#if $result.isLoading}
   <LoadingBanner />
 {:else}
+  {#if $result.gameSettings?.state === "notActive"}
+  <div class="content">Cool stuff coming soon</div>
+  {:else if $result.gameSettings?.state === "completed"}
   <div class="content">
     <Router {url}>
       <Logo />
-
+      <div class="description">Thank you for playing!</div>
+      <Nav onlyShowRanking={true}/>
+      <Dialog />
+      <main>
+        <Route component={Ranking} />
+      </main>
+    </Router>
+  </div>
+  {:else}
+  <div class="content">
+    <Router {url}>
+      <Logo />
       {#if $gameLoaded}
-        <Nav />
+        <Nav onlyShowRanking={false}/>
         <Dialog />
       {/if}
 
@@ -71,10 +114,15 @@
       </main>
     </Router>
   </div>
+  {/if}
 {/if}
 
 <style>
   .content {
     padding: 24px;
+  }
+  .description {
+    text-align: center;
+    padding: 20px;
   }
 </style>
