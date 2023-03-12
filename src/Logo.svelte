@@ -11,7 +11,8 @@
   </h1>
   <div class="title-group">
     <h2>Public Aptitude Challenge</h2>
-    <h4><a href="https://discord.gg/g5Yhybq6G9">join the discord</a></h4>
+    <h4><a target=”_blank” href="https://discord.gg/g5Yhybq6G9">join the discord</a></h4>
+    <h4 class="feedback"><a target=”_blank” href="https://docs.google.com/forms/d/e/1FAIpQLSfbULS0ansRvAoukMHpgs0Wdv3kFTYzkE4ybdzkPBF56g7HqA/viewform">feedback form</a></h4>
   </div>
 </div>
 
@@ -48,5 +49,8 @@
     align-content: center;
     justify-content: center;
     gap: 10px;
+  }
+  .feedback{
+    color: #b28f3c;
   }
 </style>
