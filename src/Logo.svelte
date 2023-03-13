@@ -1,4 +1,9 @@
-<div class="logo-container">
+<script>
+    import SimpleCoundown from "./SimpleCoundown.svelte";
+
+</script>
+<div class='wrapper'>
+  <div class="logo-container">
   <h1>
     <a href="#top">
       <img
@@ -15,9 +20,28 @@
     <h4 class="feedback"><a target=”_blank” href="https://docs.google.com/forms/d/e/1FAIpQLSfbULS0ansRvAoukMHpgs0Wdv3kFTYzkE4ybdzkPBF56g7HqA/viewform">feedback form</a></h4>
   </div>
 </div>
+<div class='countdown'>
+  TIME REMAINING: <SimpleCoundown endTime={1678795199000}/>
+</div>
+</div>
 
 <style lang="scss">
   @import './styles/constants';
+  .wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .countdown {
+    color: red!important;
+    font-family: "Chakra Petch", sans-serif!important;
+    font-weight: bold!important;
+    &>*{
+      color: red!important;
+      font-family: "Chakra Petch", sans-serif!important;
+      font-weight: bold!important;
+    }
+  }
   .logo-container {
     display: grid;
     grid-template-columns: 200px 1fr;
