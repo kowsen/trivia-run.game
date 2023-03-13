@@ -21,7 +21,7 @@
   </div>
 </div>
 <div class='countdown'>
-  TIME REMAINING: <SimpleCoundown endTime={1678795199000}/>
+  TIME REMAINING: <SimpleCoundown endTime={1678798799000}/>
 </div>
 </div>
 
