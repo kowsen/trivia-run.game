@@ -81,7 +81,14 @@
   <div class="content">
     <Router {url}>
       <Logo />
-      <div class="description">Thank you for playing!</div>
+      <div class="description">
+        <h3>Thank you for taking part in this Elegant Skeleton Public Aptitude Study</h3>
+        <div class="question-text-container">
+          We appreciate your contributions to the field of collective neurocapability. We anticipate that the results from this study will provide ample opportunity for future expansion and research.
+        <p/>
+        The Elegant Skeleton Research Institute cordially invites willing participants to provide any feedback either via <a class="blue" target="_blank" href="https://discord.gg/g5Yhybq6G9">Discord</a>, <a  class="blue" target="_blank" href="mailto:elegantskeleton@outlook.com">email (elegantskeleton@outlook.com)</a>, or the <a  class="blue" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfbULS0ansRvAoukMHpgs0Wdv3kFTYzkE4ybdzkPBF56g7HqA/viewform">feedback form</a>.
+        </div>
+      </div>
       <Nav onlyShowRanking={true}/>
       <Dialog />
       <main>
@@ -117,12 +124,15 @@
   {/if}
 {/if}
 
-<style>
+<style lang="scss">
+  @import './styles/constants';
   .content {
     padding: 24px;
   }
   .description {
     text-align: center;
-    padding: 20px;
+  }
+  .blue {
+    color:$dark-accent-color;
   }
 </style>
